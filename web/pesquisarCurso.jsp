@@ -39,8 +39,8 @@
                     </td>
                     
                     <td>
-                        <a href="manterCursoController?acao=prepararOperacao&operacao=editar&codCurso=${curso.codCurso}">Alterar</a>
-                        <a href="manterCursoController?acao=prepararOperacao&operacao=excluir&codCurso=${curso.codCurso}">Excluir</a>
+                        <a href="ManterCursoController?acao=prepararOperacao&operacao=editar&codCurso=${curso.codCurso}">Alterar</a>
+                        <a href="ManterCursoController?acao=prepararOperacao&operacao=excluir&codCurso=${curso.codCurso}">Excluir</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -54,7 +54,7 @@
                 </td>
                 
                 <td>
-                    <form action="manterCursoController?acao=prepararOperacao&operacao=incluir" method="post">
+                    <form action="ManterCursoController?acao=prepararOperacao&operacao=incluir" method="post">
                         <input type="submit" id="incluiNovo" value="Incluir Novo"/>
                     </form>
                 </td>

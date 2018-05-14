@@ -24,6 +24,7 @@ public class TurmaDAO {
         session.clear();
         List<Turma> turma = session.createQuery(
                 "from turma").list();
+        session.close();
         return turma;
     }
     
@@ -32,7 +33,7 @@ public class TurmaDAO {
         session.beginTransaction();
         session.clear();
         List<Turma> turma = session.createCriteria(Turma.class).list();
-        
+        session.close();
         return turma;
     }
 
@@ -43,6 +44,8 @@ public class TurmaDAO {
         session.clear();
         session.save(turma);
         transaction.commit();
+        session.close();
+
     }
 
     public static void alterar(Turma turma) throws ClassNotFoundException, SQLException{
@@ -51,6 +54,7 @@ public class TurmaDAO {
         session.clear();
         session.update(turma);
         transaction.commit();
+        session.close();
     }
 
     public static void excluir(Turma turma) throws ClassNotFoundException, SQLException{
@@ -59,6 +63,7 @@ public class TurmaDAO {
         session.clear();
         session.delete(turma);
         transaction.commit(); 
+        session.close();
     }
 
     
