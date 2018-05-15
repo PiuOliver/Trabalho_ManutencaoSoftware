@@ -19,7 +19,7 @@ import org.hibernate.Transaction;
 public class TurmaDAO {
 
     public static List<Turma> obterTurmas() throws ClassNotFoundException, SQLException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.clear();
         List<Turma> turma = session.createQuery(
@@ -29,7 +29,7 @@ public class TurmaDAO {
     }
     
     public static List<Turma> obterTurma(int codTurma) throws ClassNotFoundException, SQLException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.clear();
         List<Turma> turma = session.createCriteria(Turma.class).list();

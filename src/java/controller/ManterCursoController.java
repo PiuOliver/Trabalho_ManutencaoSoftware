@@ -39,8 +39,8 @@ public class ManterCursoController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("professores", Professor.obterProfessores());
-            int codCurso = Integer.parseInt(request.getParameter("codCurso"));
-            if (operacao.equals("editar")) {
+            if (!operacao.equals("incluir")) {
+                int codCurso = Integer.parseInt(request.getParameter("codCurso"));
                 curso = Curso.obterCurso(codCurso);
                 request.setAttribute("curso", curso);
             } 
