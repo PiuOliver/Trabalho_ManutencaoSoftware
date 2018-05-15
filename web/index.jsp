@@ -21,7 +21,7 @@
         <a href="PesquisarMatrizCurricularController?acao=prepararOperacao">Consultar Matriz Curricular</a> <br />
         <a href="PesquisarProfessorPorCursoController?acao=prepararOperacao"> Consultar Professores Vinculados a cada Curso</a> <br />
         <a href="PesquisarNotaFrequenciaController?acao=prepararOperacao"> Manter Nota e Frequência</a> <br />
-        <a href=""> Calcular Resultado de Rendimento do Aluno</a> <br />
+        <a href="ConsultaNotaFrequenciaController?acao=prepararOperacao"> Calcular Resultado de Rendimento do Aluno</a> <br />
         --- Relatórios ---<br/>
         <a href="ReatorioCursosController?acao=prepararOperacao">Relatório de Cursos</a></br>
         <a href="RelatorioProfessorController?acao=prepararOperacao">Relatório de Professores Por Titulação</a></br>

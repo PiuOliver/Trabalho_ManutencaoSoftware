@@ -39,13 +39,12 @@ public class ManterCursoController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("professores", Professor.obterProfessores());
+            int codCurso = Integer.parseInt(request.getParameter("codCurso"));
             if (operacao.equals("editar")) {
-                int codCurso = Integer.parseInt(request.getParameter("codCurso"));
                 curso = Curso.obterCurso(codCurso);
                 request.setAttribute("curso", curso);
-            } else if(operacao.equals("excluir")){
-                curso.excluir(curso);
-            }
+            } 
+            
             RequestDispatcher view = request.getRequestDispatcher("/manterCurso.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -87,7 +86,7 @@ public class ManterCursoController extends HttpServlet {
                 curso.setProfessor(Professor.obterProfessor(matriculaProfessor));
                 curso.editar();
             } else if (operacao.equals("excluir")) {
-                curso.excluir(curso);
+                curso.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
             view.forward(request, response);

@@ -27,7 +27,8 @@ public class Avaliacao implements java.io.Serializable {
     private Aluno aluno;
     private Turma turma;
     private Float nota1;
-    private Float nota2;
+    private Float nota2;   
+    private Float nota3;
     private Integer numFaltas;
     private Float notaProvaFinal;
 
@@ -40,12 +41,13 @@ public class Avaliacao implements java.io.Serializable {
         this.turma = turma;
     }
 
-    public Avaliacao(AvaliacaoId id, Aluno aluno, Turma turma, Float nota1, Float nota2, Integer numFaltas, Float notaProvaFinal) {
+    public Avaliacao(AvaliacaoId id, Aluno aluno, Turma turma, Float nota1, Float nota2, Float nota3, Integer numFaltas, Float notaProvaFinal) {
         this.id = id;
         this.aluno = aluno;
         this.turma = turma;
         this.nota1 = nota1;
-        this.nota2 = nota2;
+        this.nota2 = nota2; 
+        this.nota3 = nota3;
         this.numFaltas = numFaltas;
         this.notaProvaFinal = notaProvaFinal;
     }
@@ -102,6 +104,15 @@ public class Avaliacao implements java.io.Serializable {
         this.nota2 = nota2;
     }
 
+    @Column(name = "nota3", precision = 12, scale = 0)
+    public Float getNota3() {
+        return this.nota3;
+    }
+
+    public void setNota3(Float nota3) {
+        this.nota2 = nota2;
+    }
+    
     @Column(name = "numFaltas")
     public Integer getNumFaltas() {
         return this.numFaltas;
@@ -140,9 +151,11 @@ public class Avaliacao implements java.io.Serializable {
         return AvaliacaoDao.obterAvaliacoesPorTurma(codTurma);
     }
     
+    
     public static Avaliacao obterAvaliacao(AvaliacaoId avaliacaoId) throws SQLException, ClassNotFoundException {
         return AvaliacaoDao.obterAvaliacao(avaliacaoId);
     }
+    
     
     public static List<Avaliacao> obterAvaliacoesPorAnoSemestre(int ano, int semestre, int matricula) throws SQLException, ClassNotFoundException {
         List<Avaliacao> avaliacoes = AvaliacaoDao.obterAvaliacoesPorAluno(matricula);

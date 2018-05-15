@@ -11,27 +11,60 @@ import util.HibernateUtil;
 public class AvaliacaoDao {
 
     public static void gravarAvaliacao(Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(avaliacao);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.save(avaliacao);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
 
     public static void editarAvaliacao(Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(avaliacao);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.update(avaliacao);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
 
     public static void excluirAvaliacao(Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(avaliacao);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.delete(avaliacao);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
 
     public static List<Avaliacao> obterAvaliacoesPorAluno(int matricula) throws ClassNotFoundException, SQLException {

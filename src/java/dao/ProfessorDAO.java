@@ -22,19 +22,41 @@ import util.HibernateUtil;
  */
 public class ProfessorDAO {
     public static void gravarProfessor(Professor professor) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(professor);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.save(professor);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
      public static void excluirProfessor(Professor professor) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(professor);
-        transaction.commit();
-        session.close();
+         Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.delete(professor);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
     public static List<Professor> obterProfessores() throws ClassNotFoundException, SQLException{
@@ -62,11 +84,22 @@ public class ProfessorDAO {
     }
     
      public static void editarProfessor(Professor professor) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(professor);
-        session.close();
-        transaction.commit();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.update(professor);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
     

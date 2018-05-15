@@ -61,26 +61,59 @@ public class DisciplinaDao {
     }
     
     public static void gravarDisciplina(Disciplina disciplina) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(disciplina);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.save(disciplina);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
     public static void editarDisciplina(Disciplina disciplina) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(disciplina);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.update(disciplina);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
     public static void excluirDisciplina(Disciplina disciplina) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(disciplina);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.delete(disciplina);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
 }
