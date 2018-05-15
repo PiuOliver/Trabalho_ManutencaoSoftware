@@ -21,28 +21,60 @@ import util.HibernateUtil;
  */
 public class CursoDAO {
     public static void gravarCurso(Curso curso) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(curso);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.save(curso);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
     public static void editarCurso(Curso curso) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(curso);
-        transaction.commit();
-        session.close();
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.update(curso);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
     public static void excluirCurso(Curso curso) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(curso);
-        transaction.commit();
-        session.close();
-        
+        Transaction tx = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            session.delete(curso);
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();
+        }  
     }
     
     public static List<Curso> obterCursos() throws ClassNotFoundException, SQLException{

@@ -22,16 +22,6 @@ public class ManterCursoController extends HttpServlet {
 
     private Curso curso;
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
@@ -54,8 +44,7 @@ public class ManterCursoController extends HttpServlet {
                 curso = Curso.obterCurso(codCurso);
                 request.setAttribute("curso", curso);
             } else if(operacao.equals("excluir")){
-                int codCurso = Integer.parseInt(request.getParameter("codCurso"));
-                curso.excluir();
+                curso.excluir(curso);
             }
             RequestDispatcher view = request.getRequestDispatcher("/manterCurso.jsp");
             view.forward(request, response);
@@ -98,7 +87,7 @@ public class ManterCursoController extends HttpServlet {
                 curso.setProfessor(Professor.obterProfessor(matriculaProfessor));
                 curso.editar();
             } else if (operacao.equals("excluir")) {
-                curso.excluir();
+                curso.excluir(curso);
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
             view.forward(request, response);

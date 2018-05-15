@@ -152,8 +152,8 @@ public class Curso implements java.io.Serializable {
         CursoDAO.editarCurso(this);
     }
     
-    public void excluir() throws SQLException, ClassNotFoundException{
-        CursoDAO.excluirCurso(this);
+    public void excluir(Curso curso) throws SQLException, ClassNotFoundException{
+        CursoDAO.excluirCurso(curso);
     }
     
     public static List<Curso> obterCursos() throws ClassNotFoundException, SQLException{
