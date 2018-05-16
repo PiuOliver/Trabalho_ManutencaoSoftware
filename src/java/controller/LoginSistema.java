@@ -42,7 +42,6 @@ public class LoginSistema extends HttpServlet {
         String login = request.getParameter("login");
             String senha = request.getParameter("senha");
             String perfil = request.getParameter("perfil");
-
             if(perfil.equals("Professor")){
                 request.setAttribute("professores", Professor.obterProfessores());
             }else if(perfil.equals("Secretaria")){
@@ -50,9 +49,9 @@ public class LoginSistema extends HttpServlet {
             }else{
                 request.setAttribute("Aluno", Aluno.obterAlunos());
             }
-
-            RequestDispatcher view = request.getRequestDispatcher("/menus.jsp");
-               view.forward(request,response);
+            request.setAttribute("tipo", perfil);
+            RequestDispatcher view = request.getRequestDispatcher("/menus.jsp?");
+            view.forward(request,response);
         }catch(ClassNotFoundException ex) {            
            ex.printStackTrace(); 
         }catch(SQLException ex) {            

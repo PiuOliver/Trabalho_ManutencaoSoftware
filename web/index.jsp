@@ -36,7 +36,7 @@
 	<div class="block">
 		<div class="position-vertical-center">
 			<div class="position-center"><b>Login:</b>
-				<form method="post" action="LoginSistema?acao=login">
+				<form method="post" action="LoginSistema">
                                     <center>
 					<input type="text" name="login" value="" placeholder="Login:">
 					<input type="password" name="senha" value="" placeholder="Senha:">
