@@ -4,6 +4,10 @@
         <servlet-name>ConsultarNotaFrequenciaController</servlet-name>
         <servlet-class>controller.ConsultarNotaFrequenciaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginSistema</servlet-name>
+        <servlet-class>controller.LoginSistema</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarNotaFrequenciaController</servlet-name>
         <url-pattern>/ConsultarNotaFrequenciaController</url-pattern>
@@ -207,6 +211,10 @@
     <servlet-mapping>
         <servlet-name>TratamentoExcecao</servlet-name>
         <url-pattern>/TratamentoExcecao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginSistema</servlet-name>
+        <url-pattern>/LoginSistema</url-pattern>
     </servlet-mapping>
     <error-page>
         <error-code>

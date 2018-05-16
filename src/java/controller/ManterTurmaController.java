@@ -78,7 +78,7 @@ public class ManterTurmaController extends HttpServlet {
                 professor = Professor.obterProfessor(matricula);
             }
             if (operacao.equals("Incluir")) {
-                turma = new Turma(professor, disciplina, semestre, ano, numVagas, numSala, null, null);
+                turma = new Turma(professor, disciplina, semestre, ano, numVagas, numSala);
                 turma.gravar();
             } else if (operacao.equals("Editar")) {
                 turma.setDisciplina(disciplina);

@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +20,11 @@ public class PesquisarTurmaController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            List<Turma> turma = Turma.obterTurmas();
             request.setAttribute("turmas", Turma.obterTurmas());
             request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
             request.setAttribute("cursos", Curso.obterCursos());
+           
             RequestDispatcher janela = request.getRequestDispatcher("/pesquisarTurma.jsp");
             janela.forward(request, response);
         } catch (ClassNotFoundException e) {

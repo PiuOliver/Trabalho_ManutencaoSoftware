@@ -1,33 +1,56 @@
 <%-- 
-    Document   : menu
-    Created on : 20/11/2012, 08:04:48
-    Author     : Heleno
+    Document   : login
+    Created on : 16/05/2018, 00:57:48
+    Author     : gabrieldeoliveira
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
-    </head>
-    <body>
-        <a href="PesquisarCursoController">Manter Cursos</a> </br>
-        <a href="PesquisarDisciplinaController?filtro=0">Manter Disciplinas</a> </br>
-        <a href="PesquisarProfessorController">Manter Professores</a> </br>
-        <a href="PesquisarAlunoController">Manter Alunos</a> </br>
-        <a href="PesquisarTurmaController">Manter Turmas</a><br/>
-        ---<br/>
-        <a href="PesquisarMatrizCurricularController?acao=prepararOperacao">Consultar Matriz Curricular</a> <br />
-        <a href="PesquisarProfessorPorCursoController?acao=prepararOperacao"> Consultar Professores Vinculados a cada Curso</a> <br />
-        <a href="PesquisarNotaFrequenciaController?acao=prepararOperacao"> Manter Nota e Frequência</a> <br />
-        <a href="ConsultaNotaFrequenciaController?acao=prepararOperacao"> Calcular Resultado de Rendimento do Aluno</a> <br />
-        --- Relatórios ---<br/>
-        <a href="ReatorioCursosController?acao=prepararOperacao">Relatório de Cursos</a></br>
-        <a href="RelatorioProfessorController?acao=prepararOperacao">Relatório de Professores Por Titulação</a></br>
-        <a href="RelatorioDisciplinaPorCursoController?acao=prepararOperacao">Relatório de Disciplina Por Cursos</a></br>
-        <a href="RelatorioAlunoAnoSemestreController?acao=prepararOperacao">Relatório de Aluno Ano/Semestre</a></br>
-        <a href="RelatorioDiarioDeClasseController?acao=prepararOperacao">Diário de Classe</a></br>
-        <a href="ReatorioHistoricoAlunoController?acao=prepararOperacao">Historico</a></br>
-    </body>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Tela De login</title>
+</head>
+<style>
+	.position-vertical-center {
+		height: 500px;
+		-webkit-height: 500px;
+		display: flex;
+		display: -webkit-flex;
+		align-items: center;
+		-webkit-align-items: center;
+	}
+	
+	.position-center {
+		width: 100%;
+		-webkit-width: 100%;
+		display: flex;
+		display: -webkit-flex;
+		justify-content: center;
+		-webkit-justify-content: center;
+	}
+</style>
+
+<body>
+	<div class="block">
+		<div class="position-vertical-center">
+			<div class="position-center"><b>Login:</b>
+				<form method="post" action="LoginSistema?acao=login">
+                                    <center>
+					<input type="text" name="login" value="" placeholder="Login:">
+					<input type="password" name="senha" value="" placeholder="Senha:">
+                                        <br><br>
+                                        <input type="radio" name="perfil" value="Professor"/> Professor
+                                        <input type="radio" name="perfil" value="Secretaria"/> Secretária
+                                        <input type="radio" name="perfil" value="Aluno"/> Aluno
+                                        <br><br>
+                                        <button type="submit" name="acao" value="salvar">Entrar</button>
+                                    </center>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
 </html>

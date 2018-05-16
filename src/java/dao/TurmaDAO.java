@@ -19,13 +19,25 @@ import org.hibernate.Transaction;
 public class TurmaDAO {
 
     public static List<Turma> obterTurmas() throws ClassNotFoundException, SQLException{
+        Transaction tx = null; 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.clear();
-        List<Turma> turma = session.createQuery(
+        List<Turma> turma = null;
+        try {
+            Transaction transaction = session.beginTransaction();
+            tx = session.getTransaction();
+            turma = session.createQuery(
                 "from turma").list();
-        session.close();
-        return turma;
+            if (!transaction.wasCommitted())
+                 transaction.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+           session.close();  
+           return turma;
+        }  
     }
     
     public static List<Turma> obterTurma(int codTurma) throws ClassNotFoundException, SQLException{

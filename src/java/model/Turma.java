@@ -40,7 +40,7 @@ public class Turma implements java.io.Serializable {
         this.disciplina = disciplina;
     }
 
-    public Turma(Professor professor, Disciplina disciplina, Integer semestre, Integer ano, Integer numVagas, String numSala, Set<Avaliacao> avaliacaos, Set<Horario> horarios) {
+    public Turma(Professor professor, Disciplina disciplina, Integer semestre, Integer ano, Integer numVagas, String numSala) {
         this.professor = professor;
         this.disciplina = disciplina;
         this.semestre = semestre;
