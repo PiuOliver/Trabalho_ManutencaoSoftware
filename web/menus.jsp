@@ -26,7 +26,7 @@
             <a href="PesquisarMatrizCurricularController?acao=prepararOperacao">Consultar Matriz Curricular</a> <br />
             <a href="PesquisarProfessorPorCursoController?acao=prepararOperacao"> Consultar Professores Vinculados a cada Curso</a> <br />
             <a href="PesquisarNotaFrequenciaController?acao=prepararOperacao"> Manter Nota e Frequência</a> <br />
-            <a href="ConsultaNotaFrequenciaController?acao=prepararOperacao"> Calcular Resultado de Rendimento do Aluno</a> <br />
+            <a href="ConsultarNotaFrequenciaController?acao=prepararOperacao"> Calcular Resultado de Rendimento do Aluno</a> <br />
         </c:if>
         <c:if test="${tipo == 'Professor'}">
         --- Relatórios ---<br/>

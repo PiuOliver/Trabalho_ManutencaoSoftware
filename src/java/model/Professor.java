@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "professor", catalog = "Marco")
-public class Professor implements java.io.Serializable {
+public class Professor extends Pessoa implements java.io.Serializable {
 
     private int matricula;
     private Curso curso;
