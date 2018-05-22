@@ -17,6 +17,11 @@ import org.hibernate.Transaction;
  * @author gabrieldeoliveira
  */
 public class TurmaDAO {
+    
+    static Turma turma = null;
+    static List<Turma> turmas = null;
+    static Session session = null;
+    static Transaction transaction = null;
 
     public static List<Turma> obterTurmas() throws ClassNotFoundException, SQLException{
         Transaction tx = null; 

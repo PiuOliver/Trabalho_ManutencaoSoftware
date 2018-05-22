@@ -8,6 +8,6 @@
   <table-filter match-name="disciplina"/>
   <table-filter match-name="curso"/>
   <table-filter match-name="horario"/>
-  <table-filter match-name="turma"/>
+  <table-filter match-name="Turma"/>
   <table-filter match-name="professor"/>
 </hibernate-reverse-engineering>

@@ -26,7 +26,7 @@ public class PesquisarTurmaController extends HttpServlet {
             request.setAttribute("cursos", Curso.obterCursos());
            
             RequestDispatcher janela = request.getRequestDispatcher("/pesquisarTurma.jsp");
-            janela.forward(request, response);
+                janela.forward(request, response);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
         } catch (SQLException e) {

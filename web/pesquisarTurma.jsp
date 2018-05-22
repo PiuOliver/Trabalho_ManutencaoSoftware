@@ -23,12 +23,12 @@
                     </td>
                     <td>Ano:</td>
                     <td>
+                        <jsp:useBean id="data" class="java.util.Date"/>
                         <select name="optAno">
                             <option value="0" selected>Todos</option>
-                            <option value="2013" selected>2013</option>
-                            <option value="2012" selected>2012</option>
-                            <option value="2011" selected>2011</option>
-                            <option value="2010" selected>2010</option>
+                            <c:forEach var="contagem" begin="2010" end="${data.year + 1900}">
+                                <option name="year" value="<c:out value="${contagem}"/>" selected><c:out value="${contagem}"/></option>
+                            </c:forEach>
                          </select>
                     </td>
                     <td>Semestre:</td>

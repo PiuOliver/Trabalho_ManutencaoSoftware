@@ -42,15 +42,13 @@
 
                     <td>
                         
-                        <select id="ano" disabled="" name="ano">
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                                <option value="2009">2009</option>
-                                <option value="2008">2008</option>
-                                <option value="2007">2007</option>
-                        </select>
+                       <jsp:useBean id="data" class="java.util.Date"/>
+                        <select name="optAno">
+                            <option value="0" selected>Todos</option>
+                            <c:forEach var="contagem" begin="2010" end="${data.year + 1900}">
+                                <option name="year" value="<c:out value="${contagem}"/>" selected><c:out value="${contagem}"/></option>
+                            </c:forEach>
+                         </select>
                     </td>
 
                     <td>
@@ -87,6 +85,7 @@
                 <th>Frequencia</th>
                 <th>Nota 1</th>
                 <th>Nota 2</th>
+                <th>Nota 3</th>
                 <th>Media</th>
                 <th>Nota Prova Final</th>
                 <th>Nota Final</th>
@@ -99,18 +98,19 @@
                     <td>${avaliacao.turma.disciplina.nome}</td>
                     <td>${avaliacao.numFaltas}</td>
                     <td>${avaliacao.nota1}</td>
-                    <td>${avaliacao.nota2}</td>
-                    <td>${(avaliacao.nota1 + avaliacao.nota2)/2}</td>
+                    <td>${avaliacao.nota2}</td> 
+                    <td>${avaliacao.nota3}</td>
+                    <td>${(avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3}</td>
                     <td>${avaliacao.notaProvaFinal}</td>
                     <td>
-                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) ge avaliacao.notaProvaFinal}">${((avaliacao.nota1 + avaliacao.nota2)/2)}</c:if>
-                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) < avaliacao.notaProvaFinal}">60</c:if>
+                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) ge avaliacao.notaProvaFinal}">${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3)}</c:if>
+                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) < avaliacao.notaProvaFinal}">60</c:if>
                     </td>
-                    <td><c:if test="${not empty(avaliacao.nota1) and not empty(avaliacao.nota2)}">    
+                    <td><c:if test="${not empty(avaliacao.nota1) and not empty(avaliacao.nota3)}">    
                             <c:if test="${avaliacao.notaProvaFinal eq 0 or empty(avaliacao.notaProvaFinal)}">
-                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) ge 60}">APROVADO</c:if>
-                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) < 40}">REPROVADO</c:if>
-                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) < 60 and ((avaliacao.nota1 + avaliacao.nota2)/2) ge 40}">PROVA FINAL</c:if>
+                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) ge 60}">APROVADO</c:if>
+                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) < 40}">REPROVADO</c:if>
+                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) < 60 and ((avaliacao.nota1 + avaliacao.nota2)/2) ge 40}">PROVA FINAL</c:if>
                             </c:if>
                             <c:if test="${avaliacao.notaProvaFinal > 0}">
                                 <c:if test="${avaliacao.notaProvaFinal ge 60}">APROVADO</c:if>

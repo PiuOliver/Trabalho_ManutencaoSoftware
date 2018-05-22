@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "turma", catalog = "Marco")
+@Table(name = "Turma", catalog = "Marco")
 public class Turma implements java.io.Serializable {
 
     private Integer codTurma;
